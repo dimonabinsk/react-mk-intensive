@@ -5,11 +5,14 @@ const API_KEY = '1282b40e';
 const BASE_URL = `https://www.omdbapi.com/?s=${SLUG}&apikey=${API_KEY}`;
 
 function formatResponse(dataFromServer) {
-  return dataFromServer.Search;
+  return dataFromServer.Search.map((item) => ({
+    ...item,
+    isFavorite: false,
+  }));
 }
 
 export function useGetFilms() {
-  const [films, setFilms] = useState();
+  const [films, setFilms] = useState([]);
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -23,7 +26,6 @@ export function useGetFilms() {
         setFilms(formatData);
         setLoading(false);
       });
-    
   }, []);
   // eslint-disable-next-line no-console
   // console.log(films);

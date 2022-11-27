@@ -13,7 +13,7 @@ const MainLayout = ({ children }) => {
       <h1 className="mt-3 mb-3">{isHome ? 'All Films' : 'Favorite Films'}</h1>
       <Nav variant="pills" className="justify-content-center" defaultActiveKey="/">
         <Nav.Item>
-          <Nav.Link as={Link} to="/" href="/" exact>
+          <Nav.Link as={Link} to="/" href="/">
             All Films
           </Nav.Link>
         </Nav.Item>
