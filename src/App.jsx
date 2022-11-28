@@ -60,10 +60,7 @@ const App = () => {
             {isLoading ? (
               <Spinner />
             ) : (
-              <Favorites
-                favoriteFilmsList={isFavoriteFilms}
-                onHandleFavorite={handleAddFavoriteFilms}
-              />
+              <Favorites filmsList={isFavoriteFilms} onHandleFavorite={handleAddFavoriteFilms} />
             )}
           </Route>
         </Switch>

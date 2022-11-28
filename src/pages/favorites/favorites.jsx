@@ -1,46 +1,26 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { FavoriteBtn } from 'ui';
 import { useHistory } from 'react-router-dom';
 
-const Favorites = ({ favoriteFilmsList, onHandleFavorite }) => {
+import Button from 'react-bootstrap/Button';
+
+import { CardFilmsList } from 'components';
+
+const Favorites = ({ filmsList, onHandleFavorite }) => {
   const history = useHistory();
 
   const handleGoBack = () => {
     history.push('/');
   };
-  // console.log(films);
-  if (favoriteFilmsList.length > 0) {
+
+  if (filmsList.length > 0) {
     return (
-      <Row className="mt-3">
-        {favoriteFilmsList.map(({ Title, Year, imdbID, Type, Poster, isFavorite }) => (
-          <Col key={imdbID}>
-            <Card style={{ width: '18rem', height: '45rem' }} className="mt-5">
-              <Card.Body>
-                <Card.Img variant="top" src={Poster} style={{ maxHeight: '20rem' }} />
-              </Card.Body>
-              <Card.Body>
-                <Card.Title>{Title}</Card.Title>
-                <Card.Text>{Type}</Card.Text>
-                <Card.Text>{Year}</Card.Text>
-              </Card.Body>
-              <Card.Body style={{ display: 'flex', justifyContent: 'center' }}>
-                <FavoriteBtn status={isFavorite} onHandleFavorite={onHandleFavorite} id={imdbID} />
-              </Card.Body>
-              <Card.Footer>
-                <Button variant="primary">More detailed</Button>
-              </Card.Footer>
-            </Card>
-          </Col>
-        ))}
-      </Row>
+      <>
+        <CardFilmsList filmsList={filmsList} onHandleFavorite={onHandleFavorite} />
+      </>
     );
   }
 
@@ -55,7 +35,7 @@ const Favorites = ({ favoriteFilmsList, onHandleFavorite }) => {
 };
 
 Favorites.propTypes = {
-  favoriteFilmsList: PropTypes.array,
+  filmsList: PropTypes.array,
   onHandleFavorite: PropTypes.func,
 };
 
