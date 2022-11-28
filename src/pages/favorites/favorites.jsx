@@ -8,15 +8,14 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FavoriteBtn } from 'ui';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const Favorites = ({ favoriteFilmsList, onHandleFavorite }) => {
-
   const history = useHistory();
 
   const handleGoBack = () => {
-    history.push("/");
-  }
+    history.push('/');
+  };
   // console.log(films);
   if (favoriteFilmsList.length > 0) {
     return (
@@ -48,7 +47,7 @@ const Favorites = ({ favoriteFilmsList, onHandleFavorite }) => {
   return (
     <div>
       <h3>No favorite movies</h3>
-      <Button   className="btn btn-primary" onClick={handleGoBack}>
+      <Button className="btn btn-primary" onClick={handleGoBack}>
         All Films
       </Button>
     </div>
